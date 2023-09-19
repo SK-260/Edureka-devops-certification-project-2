@@ -18,7 +18,7 @@ kind: Deployment
 metadata:
   name: train-schedule
 spec: 
-  replicas: 6
+  replicas: 4
   selector: 
     matchLabels:
       app: train-schedule
@@ -29,6 +29,6 @@ spec:
     spec:
      containers:
       - name: train-schedule
-        image: sk260/edureka-project2
+        image: sk260/edureka-project2:latest
         ports: 
          - containerPort: 8080
