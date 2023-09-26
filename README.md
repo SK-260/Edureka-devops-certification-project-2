@@ -1,15 +1,15 @@
-# cicd-pipeline-train-schedule-autodeploy
+# Edureka Devops Certification Project 2
 
-This is a simple train schedule app written using nodejs. It is intended to be used as a sample application for a series of hands-on learning activities.
+## Problem Statement 
 
-## Running the app
+A retail company Abstergo Corp.has recently setup an online shopping portal(website) to sell their products. Due to fierce competition, the company wants a solution that can reduce the time and effort it needs to enhance the functionality of their website on a regular basis. They are looking for an automated way to deploy the new code (for new features) to production website whenever they want.
 
-You need a Java JDK 7 or later to run the build. You can run the build like this:
+### Business Requirements
+- The team of developers working on new features will merge their code to a GitHub repo.
+- As soon as the code reaches GitHub, using a CI (Continuous Integration) pipeline, setup in Jenkins, automated builds will be triggered.
+- The automated builds will frequently deploy new features to the production website.
+- Every build will prepare a Dockerfile and push docker images to docker-hub.
+- Every docker image will be deployed (Continuous Deployment) to a kubernetes-cluster
 
-    ./gradlew build
-
-You can run the app with:
-
-    ./gradlew npm_start
-
-Once it is running, you can access it in a browser at http://localhost:8080
+#### Forked Repository for Project 
+This Project is based on a sample project repository forked from [Edureka's Devops Certification Sample Repo](https://github.com/bhavukm/cicd-pipeline-train-schedule-autodeploy)
