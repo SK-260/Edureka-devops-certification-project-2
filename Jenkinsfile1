@@ -21,8 +21,18 @@ pipeline{
         stage("Build Docker Image"){
             steps{
                 script{
-                    dockerImage = docker.build("sk260/edureka-project2")
-
+                    dockerImage = docker.build(sk260/edureka-project2 + ":$BUILD_NUMBER")
+                    // format for this is docker.build(<imagename +:<tagname>, path of dockerfile )
+                }
+            }
+        }
+        stage("Push Docker Image"){
+            steps{
+                script{
+                    docker.withRegistry("https://hub.docker.com/repository/docker/sk260/edureka-project2/general","dockerhub_id")
+                    // format for this is docker.withRegistry(<registry url>, <registry credentials>)
+                    dockerImage.push($BUILD_NUMBER)
+                    // format for this is <variable storing details of image>.push(<tag>)
                 }
             }
         }
