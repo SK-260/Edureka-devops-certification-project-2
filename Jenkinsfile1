@@ -37,7 +37,7 @@ pipeline{
                 }
             }
         }
-        stge("Deploy to kubernetes cluster"){
+        stage("Deploy to kubernetes cluster"){
             steps{
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'Kubemaster', transfers: [
                     sshTransfer(
