@@ -8,7 +8,7 @@ pipeline{
         stage("Gradle Build"){
             steps{
                 git 'https://github.com/SK-260/Edureka-devops-certification-project-2.git'
-                sh ' gradlew build'
+                sh ' gradle build'
             }
     //         post{
     //             always{
