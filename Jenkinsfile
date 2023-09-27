@@ -35,5 +35,31 @@ pipeline{
                         verbose: false)])
             }
         }
+        stage('Build image and push'){
+            steps{
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'Test Server', transfers: [
+                    sshTransfer(
+                        cleanRemote: false, 
+                        excludes: '', 
+                        execCommand: '''
+                            cd gradle-project
+                            docker rmi edureka-project
+                            docker build -t sk260/edureka-project2:v1 .
+                            docker push sk260/edureka-project2:v1
+                        ''', 
+                        execTimeout: 120000, 
+                        flatten: false, 
+                        makeEmptyDirs: false, 
+                        noDefaultExcludes: false, 
+                        patternSeparator: '[, ]+',
+                        remoteDirectory: '', 
+                        remoteDirectorySDF: false, 
+                        removePrefix: '', 
+                        sourceFiles: '')], 
+                        usePromotionTimestamp: false, 
+                        useWorkspaceInPromotion: false, 
+                        verbose: false)])
+            }        
+        }
     }
 }
