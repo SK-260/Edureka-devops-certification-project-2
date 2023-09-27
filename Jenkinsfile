@@ -11,6 +11,23 @@ pipeline{
                 withGradle {
                     sh './gradlew build'
                 }
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'Test Server', transfers: [
+                    sshTransfer(
+                        cleanRemote: false, 
+                        excludes: '', 
+                        execCommand: '', 
+                        execTimeout: 120000, 
+                        flatten: false, 
+                        makeEmptyDirs: false, 
+                        noDefaultExcludes: false, 
+                        patternSeparator: '[, ]+', 
+                        remoteDirectory: '/gradle-project', 
+                        remoteDirectorySDF: false, 
+                        removePrefix: '', 
+                        sourceFiles: 'bin/**, data/**, dist/**, gradle/wrapper/**, test/**, gradlew, gradlew.bat, package.json, package-lock.json, public/**, routes/**, views/**,Dockerfile')], 
+                        usePromotionTimestamp: false, 
+                        useWorkspaceInPromotion: false, 
+                        verbose: false)])
             }
         }
     }
