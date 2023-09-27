@@ -21,7 +21,7 @@ pipeline{
         stage("Build Docker Image"){
             steps{
                 script{
-                    dockerImage = docker.build(sk260/edureka-project2 + ":$BUILD_NUMBER")
+                    dockerImage = docker.build("sk260/edureka-project2" + ":$BUILD_NUMBER")
                     // format for this is docker.build(<imagename +:<tagname>, path of dockerfile )
                 }
             }
