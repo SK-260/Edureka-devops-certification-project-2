@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+    tools{
+        jdk 'JDK 8'
+        gradle 'My Gradle'
+    }
+    stages{
+        stage('Delete Workspace'){
+            steps{
+                deleteDir()
+            }              
+        }
+        stage('Gradle Build'){
+            steps{
+                git 'https://github.com/SK-260/Edureka-devops-certification-project-2'
+                withGradle{
+                    sh './gradlew build'
+                }
+            }
+        }
+        stage("Build Docker Image"){
+            steps{
+                script{
+                    dockerImage = docker.build("sk260/edureka-project2")
+
+                }
+            }
+        }
+    }
+}
